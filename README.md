@@ -14,8 +14,7 @@ CovCoagOutcomeDiagnostics- CohortDiagnostics package to assess coagulopathy outc
 3) Open the diagCovCoagOutcomes/extras/CodeToRun.R file which should be the only file that you need to interact with< ul>
 <li> First, build the package (build -> install and restart)</li> 
 <li> Then run renv::activate() and renv::restore() to bring in the required packages to be used</li> 
-<li> Next, 
-<ul>
+<li> Next, <ul>
 <li> outputFolder <- "....": Add your database specific information</li> 
 <li> options(andromedaTempFolder = "C/andromedaTemp"): To specify andromedaTempFolder location </li> 
 <li> maxCores <- parallel::detectCores(): To specify how many cores to use</li> 
