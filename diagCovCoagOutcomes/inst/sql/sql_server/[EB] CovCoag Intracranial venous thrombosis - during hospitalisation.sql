@@ -16,14 +16,9 @@ UNION  select c.concept_id
 
 ) I
 ) C UNION ALL 
-SELECT 11 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 12 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4179912,4111714)
-UNION  select c.concept_id
-  from @vocabulary_database_schema.CONCEPT c
-  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (4179912)
-  and c.invalid_reason is null
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4111714,4102202,4062269,4066234,4046443,762938,762811,4048787,4223544,4048786,4043735,4120316,4194609,4179912,45765438,36717594,4111713,314667,4061473,764503,4047634,4043901,4100225,764716,4217471,4104695,4319332,4167985,764712,764708,763149,4100224,4098706,4277833,764710,764726,4228209,4234264,762828,4319329,4048890,4273550,4057329,764723,4102203,4290940,4079905,4105338)
 
 ) I
 ) C
@@ -47,7 +42,7 @@ FROM
 (
   SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 11))
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 12))
 ) C
 
 
