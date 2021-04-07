@@ -1609,23 +1609,6 @@
 						"isExcluded" : false,
 						"includeDescendants" : false,
 						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 444247,
-							"CONCEPT_NAME" : "Venous thrombosis",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "111293003",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
 					}
 				]
 			}
