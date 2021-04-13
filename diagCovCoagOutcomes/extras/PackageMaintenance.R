@@ -42,55 +42,97 @@ OhdsiRTools::insertEnvironmentSnapshotInPackage("diagCovCoagOutcomes")
 
 
 library(ROhdsiWebApi)
+library(CirceR)
 library(dplyr)
+library(tidyr)
 library(here)
+Sys.setenv(TZ='GMT')
 
-Atlas.ids<-
-c("506", 
-"555",
-"568",
-"570",
-"507",
-"553",
-"508",
-"554",
-"567",
-"566",
-"559",
-"560",
-"510",
-"557",
-"509",
-"558",
-"511",
-"572",
-"512",
-"573",
-"513",
-"561",
-"514",
-"562",
-"581",
-"582",
-"574",
-"575",
-"577",
-"578",
-"586",
-"593",
-"587",
-"594",
-"588",
-"595",
-"590",
-"596",
-"591",
-"597",
-"592",
-"598",
-"517",
-"580")
 
+
+Atlas.ids<-c("386",
+             "388",
+             "389",
+             "390",
+             "391",
+             "392",
+             "393",
+             "394",
+             "395",
+             "396",
+             "397",
+             "398",
+             "399",
+             "400",
+             "401",
+             "402",
+             "404",
+             "405",
+             "406",
+             "407",
+             "408",
+             "409",
+             "410",
+             "411",
+             "412",
+             "413",
+             "414",
+             "415",
+             "416",
+             "417",
+             "418",
+             "419",
+             "420",
+             "421",
+             "422",
+             "423",
+             "424",
+             "425",
+             "426",
+             "427",
+             "428",
+             "429",
+             "430",
+             "431",
+             "432",
+             "434",
+             "435",
+             "436",
+             "437",
+             "438",
+             "439",
+             "440",
+             "441",
+             "442",
+             "444",
+             "445",
+             "447",
+             "448",
+             "449",
+             "451",
+             "452",
+             "453",
+             "454",
+             "455",
+             "456",
+             "457",
+             "458",
+             "459",
+             "460",
+             "461",
+             "462",
+             "463",
+             "464",
+             "465")
+baseurl<-.rs.askForPassword("Atlas url:")
+webApiUsername<-.rs.askForPassword("Atlas username:")
+webApiPassword<-.rs.askForPassword("Atlas password:")
+authorizeWebApi(baseurl,
+                authMethod="db",
+                webApiUsername = webApiUsername,
+                webApiPassword = webApiPassword)
+
+trace(getDefinitionsMetadata, edit=TRUE)
 
 bring.in.cohorts<-function(){
 
@@ -98,10 +140,15 @@ bring.in.cohorts<-function(){
 unlink("inst/cohorts/*")
 unlink("inst/sql/sql_server/*")
 unlink("inst/settings/*")
+
+if(file.exists(here("inst/cohorts/InclusionRules.csv"))==FALSE){
+  write.csv(data.frame(cohortName=character(),ruleSequence=character(),ruleName=character(),cohortId=character()),
+            row.names = FALSE,
+            "inst/cohorts/InclusionRules.csv")}
   
 # CohortsToCreate csv 
 # atlasId	atlasName	cohortId	name
-AllCohorts<-getCohortDefinitionsMetaData("http://10.80.192.22:8080/WebAPI")
+AllCohorts<-getCohortDefinitionsMetaData(baseurl)
 # all cohorts in Atlas
 CohortsToCreate<-AllCohorts %>% 
   filter(id %in% Atlas.ids) %>% 
@@ -115,15 +162,67 @@ write.csv(CohortsToCreate,
           "inst/settings/CohortsToCreate.csv")
   
 ROhdsiWebApi::insertCohortDefinitionSetInPackage(fileName = "inst/settings/CohortsToCreate.csv",
-                                                 baseUrl = "http://10.80.192.22:8080/WebAPI",
+                                                 baseUrl = baseurl,
                                                  insertTableSql = TRUE,
                                                  insertCohortCreationR = TRUE,
                                                  generateStats = TRUE,
                                                  packageName = "diagCovCoagOutcomes")
-if(file.exists(here("inst/cohorts/InclusionRules.csv"))==FALSE){
-write.csv(data.frame(cohortName=character(),ruleSequence=character(),ruleName=character(),cohortId=character()),
-          row.names = FALSE,
-          "inst/cohorts/InclusionRules.csv")}
-  
 }
 bring.in.cohorts()
+
+
+# summarise cohort sets definitions
+describe.cohort.def<-function(id){
+a<-  getCohortDefinition(id, baseurl)
+
+def<-list()
+for(n in 1:length(a$expression$ConceptSets)){
+working.def<-list()   
+for(i in 1:length(a$expression$ConceptSets[[n]]$expression$items)){
+working.def[[i]]<-  data.frame(a$expression$ConceptSets[[n]]$expression$items[[i]]) %>% 
+    mutate(name=a$expression$ConceptSets[[n]]$name)
+}
+working.def<-bind_rows(working.def)
+working.def<-working.def %>% 
+    select(name,concept.CONCEPT_ID, concept.CONCEPT_NAME,
+           concept.VOCABULARY_ID,isExcluded, includeDescendants)
+working.def 
+
+def[[n]]<-working.def
+
+  }
+def<-bind_rows(def)
+def
+
+}
+
+cohort.summary<-list()
+for(c in 1:length(Atlas.ids)){
+  print(c)
+  working.name <- getCohortDefinitionsMetaData(baseurl) %>% 
+    filter(id %in% Atlas.ids[[c]]) %>% 
+    select(name) %>% pull()
+  if(working.name!="[EB]CovCoag death"){ # no concept set
+  cohort.summary[[working.name]]<-describe.cohort.def(as.numeric(Atlas.ids[[c]]))
+  }
+}
+
+save(cohort.summary, file=here("extras","cohort.summary.RDS"))
+rmarkdown::render( 
+  here("extras","cohort.summary.RMD"),
+  output_dir =  here("extras"),
+  output_file=paste0("cohort.summary.html")
+  )
+
+# summarise distinct concept sets
+concept.sets<-bind_rows(cohort.summary) 
+concept.sets<-concept.sets %>% 
+  distinct()
+
+concept.sets.wide<-concept.sets %>% 
+  mutate(inc="Yes") %>% 
+  pivot_wider(names_from = name, values_from = inc, values_fill="No")
+concept.sets.wide<-concept.sets.wide %>% mutate_if(is.character,as.factor)
+
+
+save(concept.sets.wide, file=here("extras","concept.sets.wide.RDS"))
