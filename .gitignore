@@ -6,3 +6,4 @@ Shiny diagCovCoagOutcomes/
 *.sqlite*
 *.RProj.user*
 diagCovCoagOutcomes/postgresql-42.2.18.jar
+Output/
