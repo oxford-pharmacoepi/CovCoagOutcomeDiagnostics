@@ -2,6 +2,8 @@
 
 # Build the package
 # Build, install and restart
+detach("package:diagCovCoagOutcomes", unload=TRUE)
+library(CohortDiagnostics)
 library(diagCovCoagOutcomes)
 
 #install.packages("renv") # if not already installed, install renv from CRAN

@@ -19,7 +19,7 @@ UNION  select c.concept_id
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 6 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37117819,4266839,436093,45772129,432443,4145924,4264914,43530920,4280224,4179796,4291461,4028488)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37117819,436093,45772129,4028488)
 
 ) I
 ) C;

@@ -132,7 +132,7 @@ authorizeWebApi(baseurl,
                 webApiUsername = webApiUsername,
                 webApiPassword = webApiPassword)
 
-trace(getDefinitionsMetadata, edit=TRUE)
+#trace(getDefinitionsMetadata, edit=TRUE)
 
 bring.in.cohorts<-function(){
 
@@ -208,11 +208,6 @@ for(c in 1:length(Atlas.ids)){
 }
 
 save(cohort.summary, file=here("extras","cohort.summary.RDS"))
-rmarkdown::render( 
-  here("extras","cohort.summary.RMD"),
-  output_dir =  here("extras"),
-  output_file=paste0("cohort.summary.html")
-  )
 
 # summarise distinct concept sets
 concept.sets<-bind_rows(cohort.summary) 

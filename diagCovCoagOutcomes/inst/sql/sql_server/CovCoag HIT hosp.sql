@@ -5,18 +5,6 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37397537,432870)
-UNION  select c.concept_id
-  from @vocabulary_database_schema.CONCEPT c
-  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (37397537,432870)
-  and c.invalid_reason is null
-
-) I
-) C;
-INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (3007461,3031586,3024929,3039827,3024386,4267147,37393863)
@@ -31,7 +19,7 @@ UNION  select c.concept_id
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21600972)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (21600972,45768801,4150546,4213991,40481876,4207626)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
@@ -49,6 +37,13 @@ UNION  select c.concept_id
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
   and ca.ancestor_concept_id in (262,9201)
   and c.invalid_reason is null
+
+) I
+) C;
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 5 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4184758,4239484,138723,440372,4204900,4102469,35623407,4027374,4133984,4120620,37017607,137829,4225810,4186108,4211348,37016151,37019055,4101582,4146088,4101583,4098027,4100998,35625536,37312165,4082738,4028065,4230266,36715053,4133981,4185078,37397537,37204520,4177177,4234973,318397,140681,4146086,4172008,36717326,4197574,4305588,4258261,4000065,4121264,4188208,436956,4148471,37017165,4316372,433749,4009307,37204551,37204548,4235220,4031699,4098145,4159749,4137430,4103532,4298690,37110394,4314802,36713443,37016797,36674972,4123075,4264464,4121265,4233407,4123074,4123076,432881,37209558,42536958,37204478,36713112,36674474,4125494,4077348,4345236,4166754,4140545,4247776,441264,4125496,4311682,4159736,36716047,36715586,37117164,4184200,4133983,40321716,36716406,4292425,46272950,4226905,37018663,44782445,4173278,4219476,4301128,4098148,4147049,4101603,4272928,4145458,4139555,4338386,4156233,432870,4119134,4214947,4299560,4292531,4301602,37116398,4098028,4159966,4218171,36713970,4300464,440982)
 
 ) I
 ) C;
@@ -106,7 +101,7 @@ FROM
 (
   SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 1))
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 5))
 ) C
 
 

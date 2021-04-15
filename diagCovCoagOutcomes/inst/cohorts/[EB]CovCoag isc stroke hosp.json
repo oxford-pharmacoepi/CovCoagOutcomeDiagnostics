@@ -698,40 +698,6 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 372435,
-							"CONCEPT_NAME" : "Periventricular leukomalacia",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "230769007",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4129534,
-							"CONCEPT_NAME" : "Pituitary apoplexy",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "237701005",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
 							"CONCEPT_ID" : 4319146,
 							"CONCEPT_NAME" : "Pituitary infarction",
 							"STANDARD_CONCEPT" : "S",
@@ -817,13 +783,13 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4046089,
-							"CONCEPT_NAME" : "Vascular dementia of acute onset",
+							"CONCEPT_ID" : 372924,
+							"CONCEPT_NAME" : "Cerebral artery occlusion",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "230285003",
+							"CONCEPT_CODE" : "20059004",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"

@@ -7,3 +7,4 @@ Shiny diagCovCoagOutcomes/
 *.RProj.user*
 diagCovCoagOutcomes/postgresql-42.2.18.jar
 Output/
+diagCovCoagOutcomes/errorReportSql.txt
