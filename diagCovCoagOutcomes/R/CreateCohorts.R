@@ -34,7 +34,7 @@
   
   # Insert rule names in cohort_inclusion table:
   pathToCsv <- system.file("cohorts", "InclusionRules.csv", package = "diagCovCoagOutcomes")
-  CohortDiagnostics::checkInputFileEncoding(pathToCsv)
+  checkInputFileEncoding(pathToCsv)
   inclusionRules <- readr::read_csv(pathToCsv, col_types = readr::cols()) 
   inclusionRules <- data.frame(cohort_definition_id = inclusionRules$cohortId,
                                rule_sequence = inclusionRules$ruleSequence,

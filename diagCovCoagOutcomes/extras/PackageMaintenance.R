@@ -172,6 +172,7 @@ bring.in.cohorts()
 
 
 # summarise cohort sets definitions
+CohortFullNames <- read_csv(here("extras/CohortFullNames.csv"))
 describe.cohort.def<-function(id){
 a<-  getCohortDefinition(id, baseurl)
 
@@ -201,12 +202,16 @@ for(c in 1:length(Atlas.ids)){
   print(c)
   working.name <- getCohortDefinitionsMetaData(baseurl) %>% 
     filter(id %in% Atlas.ids[[c]]) %>% 
-    select(name) %>% pull()
-  if(working.name!="[EB]CovCoag death"){ # no concept set
+    select(name)
+  working.name <- working.name %>% 
+    left_join(CohortFullNames,
+              by="name") %>% 
+    select(FullName) %>% 
+    pull()
+  if(!working.name %in% c("Death","Death (hospitalised)")){ # no concept set
   cohort.summary[[working.name]]<-describe.cohort.def(as.numeric(Atlas.ids[[c]]))
   }
 }
-
 save(cohort.summary, file=here("extras","cohort.summary.RDS"))
 
 # summarise distinct concept sets
@@ -218,6 +223,9 @@ concept.sets.wide<-concept.sets %>%
   mutate(inc="Yes") %>% 
   pivot_wider(names_from = name, values_from = inc, values_fill="No")
 concept.sets.wide<-concept.sets.wide %>% mutate_if(is.character,as.factor)
-
-
 save(concept.sets.wide, file=here("extras","concept.sets.wide.RDS"))
+
+concept.sets<-concept.sets %>%
+  group_by(name) %>% 
+  group_split()
+save(concept.sets, file=here("extras","concept.sets.RDS"))

@@ -1,0 +1,75 @@
+name,FullName
+splenic vein hosp,Splenic vein thrombosis
+splenic artery hosp,Splenic artery thrombosis (hospitalised)
+CAT,Celiac artery thrombosis
+hem stroke hosp,Hemorrhagic stroke (hospitalised)
+splenic infarc,Splenic infarction
+CAT hosp,Celiac artery thrombosis (hospitalised)
+visc venous,Visceral venous thrombosis or obstruction
+splenic infarc hosp,Splenic infarction (hospitalised)
+DIC hosp,Disseminated intravascular coagulation (hospitalised)
+VTE narrow,Venous thromboembolism - narrow definition
+VTE broad hosp,Venous thromboembolism - broad definition
+DVT broad,Deep vein thrombosis - broad definition
+MI isc stroke,Myocardial infarction or ischemic stroke
+MACE hosp,MACE (hospitalised)
+VTE narrow hosp,Venous thromboembolism - narrow definition (hospitalised)
+DVT narrow hosp,Deep vein thrombosis - narrow definition (hospitalised)
+DVT narrow,Deep vein thrombosis - narrow definition
+MI isc stroke hosp,Myocardial infarction or ischemic stroke (hospitalised)
+VArryth CArrest,Ventricular arrhythmia or cardiac arrest
+hepatic vein hosp,Hepatic vein thrombosis (hospitalised)
+PE,Pulmonary embolism
+hepatic vein,Hepatic vein thrombosis
+isc stroke,Ischemic stroke
+PE hosp,Pulmonary embolism (hospitalised)
+isc stroke hosp,Ischemic stroke (hospitalised)
+DVT broad hosp,Deep vein thrombosis - broad definition (hospitalised)
+death hosp,Death
+death,Death (hospitalised)
+imm throm,Immune thrombocytopenia
+imm throm hosp,Immune thrombocytopenia (hospitalised)
+MI,Myorcardial infarction
+TP hosp,Thrombocytopenic purpura (hospitalised)
+VArryth CArrest hosp,Ventricular arrhythmia or cardiac arrest (hospitalised)
+SVT,Splanchnic Vein Thrombosis
+SVT hosp,Splanchnic Vein Thrombosis (hospitalised)
+TP,Thrombocytopenic purpura
+MI hosp,Myorcardial infarction (hospitalised)
+hepatic artery,Hepatic artery thrombosis
+thrombocyt,Thrombocytopenia
+IVT,Intracranial venous thrombosis
+DIC,Disseminated intravascular coagulation
+HF,Heart failure
+thrombocyt hosp,Thrombocytopenia (hospitalised)
+chest pain narr hosp,Chest pain or angina - narrow (hospitalised)
+IVT hosp,Intracranial venous thrombosis (hospitalised)
+chest pain narr,Chest pain or angina - narrow
+MACE,MACE
+chest pain br,Chest pain or angina - broad
+chest pain br hosp,Chest pain or angina - broad (hospitalised)
+sud card death hosp,Sudden cardiac death (hospitalised)
+HF hosp,Heart failure (hospitalised)
+hem stroke,Hemorrhagic stroke
+CArryth hosp,Cardiac arrhythmia (hospitalised)
+TTP,Thrombotic thrombocytopenic purpura
+TTP hosp,Thrombotic thrombocytopenic purpura (hospitalised)
+platelet disord hosp,Platelet disorder (hospitalised)
+CVST,Cerebral venous sinus thrombosis
+CVST hosp,Cerebral venous sinus thrombosis (hospitalised)
+VTE broad,Venous thromboembolism - broad definition
+CArryth,Cardiac arrhythmia
+HIT hosp,Heparin-induced thrombocytopenia (hospitalised)
+HIT,Heparin-induced thrombocytopenia
+sud card death,Sudden cardiac death
+platelet disord,Platelet disorder
+portal vein,Portal vein thrombosis
+portal vein hosp,Portal vein thrombosis (hospitalised)
+intest infarc hosp,Intestinal infarction (hospitalised)
+intest infarc,Intestinal infarction
+mesent vein hosp,Mesenteric vein thrombosis (hospitalised)
+mesen vein,Mesenteric vein thrombosis
+splenic artery,Splenic artery thrombosis
+splenic vein,Splenic vein thrombosis
+hepatic artery hosp,Hepatic artery thrombosis (hospitalised)
+visc venous hosp,Visceral venous thrombosis or obstruction (hospitalised)

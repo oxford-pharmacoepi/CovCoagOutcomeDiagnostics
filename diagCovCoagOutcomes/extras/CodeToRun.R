@@ -2,7 +2,8 @@
 
 # Build the package
 # Build, install and restart
-detach("package:diagCovCoagOutcomes", unload=TRUE)
+if("diagCovCoagOutcomes" %in% (.packages())){
+detach("package:diagCovCoagOutcomes", unload=TRUE)}
 library(CohortDiagnostics)
 library(diagCovCoagOutcomes)
 
