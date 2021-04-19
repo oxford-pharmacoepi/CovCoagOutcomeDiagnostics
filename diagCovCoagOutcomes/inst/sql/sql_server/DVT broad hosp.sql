@@ -23,6 +23,13 @@ SELECT 16 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 
 ) I
 ) C;
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 17 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (44834756,45586638,45572145)
+
+) I
+) C;
 
 
 with primary_events (event_id, person_id, start_date, end_date, op_start_date, op_end_date, visit_occurrence_id) as
@@ -45,6 +52,21 @@ FROM
   SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
   JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 16))
+) C
+
+
+-- End Condition Occurrence Criteria
+
+UNION ALL
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date,
+       C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.condition_start_date as sort_date
+FROM 
+(
+  SELECT co.* 
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_source_concept_id = codesets.concept_id and codesets.codeset_id = 17))
 ) C
 
 

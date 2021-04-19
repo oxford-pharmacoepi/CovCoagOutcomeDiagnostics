@@ -7,6 +7,12 @@
 					"CodesetId" : 15,
 					"ConditionTypeExclude" : false
 				}
+			},
+			{
+				"ConditionOccurrence" : {
+					"ConditionTypeExclude" : false,
+					"ConditionSourceConcept" : 16
+				}
 			}
 		],
 		"ObservationWindow" : {
@@ -1667,6 +1673,65 @@
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 16,
+			"name" : "DVT broad- ICD\n",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 44834756,
+							"CONCEPT_NAME" : "Acute venous embolism and thrombosis of other specified veins",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "453.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICD9CM",
+							"CONCEPT_CLASS_ID" : "4-dig nonbill code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45586638,
+							"CONCEPT_NAME" : "Embolism and thrombosis of other specified veins",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "I82.8",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICD10",
+							"CONCEPT_CLASS_ID" : "ICD10 code"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 45572145,
+							"CONCEPT_NAME" : "Embolism and thrombosis of unspecified vein",
+							"STANDARD_CONCEPT" : "N",
+							"STANDARD_CONCEPT_CAPTION" : "Non-Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "I82.9",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "ICD10",
+							"CONCEPT_CLASS_ID" : "ICD10 code"
 						},
 						"isExcluded" : false,
 						"includeDescendants" : false,

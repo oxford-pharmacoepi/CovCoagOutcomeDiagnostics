@@ -39,13 +39,14 @@ OhdsiRTools::insertEnvironmentSnapshotInPackage("diagCovCoagOutcomes")
 
 
 
-
+# other ----
 
 library(ROhdsiWebApi)
 library(CirceR)
 library(dplyr)
 library(tidyr)
 library(here)
+library(readr)
 Sys.setenv(TZ='GMT')
 
 
@@ -123,7 +124,9 @@ Atlas.ids<-c("386",
              "462",
              "463",
              "464",
-             "465")
+             "465",
+             "468",
+             "469")
 baseurl<-.rs.askForPassword("Atlas url:")
 webApiUsername<-.rs.askForPassword("Atlas username:")
 webApiPassword<-.rs.askForPassword("Atlas password:")
