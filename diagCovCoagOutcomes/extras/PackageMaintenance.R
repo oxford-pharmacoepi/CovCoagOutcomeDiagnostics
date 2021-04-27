@@ -91,8 +91,6 @@ Atlas.ids<-c("386",
              "425",
              "426",
              "427",
-             "428",
-             "429",
              "430",
              "431",
              "432",
@@ -232,3 +230,4 @@ concept.sets<-concept.sets %>%
   group_by(name) %>% 
   group_split()
 save(concept.sets, file=here("extras","concept.sets.RDS"))
+

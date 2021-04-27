@@ -5,13 +5,6 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 0 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4120091,45768439,45768888,4309039,762808,40480461,4108681,4091708,440417,37109911,37016922,43530605,4119608,254662,4253796,45766471,4121618,4119610,4119607,4119609,4236271)
-
-) I
-) C;
-INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (262,9201)
@@ -20,6 +13,13 @@ UNION  select c.concept_id
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
   and ca.ancestor_concept_id in (262,9201)
   and c.invalid_reason is null
+
+) I
+) C;
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4120091,45768439,45768888,4309039,762808,40480461,4108681,440417,37109911,37016922,43530605,254662,4253796,4121618,4119610,4236271,36713113,35615055,4119607)
 
 ) I
 ) C;
@@ -44,7 +44,7 @@ FROM
 (
   SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 2))
 ) C
 
 

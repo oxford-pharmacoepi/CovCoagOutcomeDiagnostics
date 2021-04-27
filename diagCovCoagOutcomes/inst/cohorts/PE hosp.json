@@ -4,7 +4,7 @@
 		"CriteriaList" : [
 			{
 				"ConditionOccurrence" : {
-					"CodesetId" : 0,
+					"CodesetId" : 2,
 					"ConditionTypeExclude" : false
 				}
 			}
@@ -63,8 +63,50 @@
 	},
 	"ConceptSets" : [
 		{
-			"id" : 0,
-			"name" : "[EB] CovCoag PE concept set",
+			"id" : 1,
+			"name" : "[EB] Inpatient visit",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 262,
+							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "ERIP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 9201,
+							"CONCEPT_NAME" : "Inpatient Visit",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "IP",
+							"DOMAIN_ID" : "Visit",
+							"VOCABULARY_ID" : "Visit",
+							"CONCEPT_CLASS_ID" : "Visit"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 2,
+			"name" : "[EB] CovCoag PE concept set 26_04",
 			"expression" : {
 				"items" : [
 					{
@@ -188,23 +230,6 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4091708,
-							"CONCEPT_NAME" : "Pulmonary air embolism",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "280964006",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
 							"CONCEPT_ID" : 440417,
 							"CONCEPT_NAME" : "Pulmonary embolism",
 							"STANDARD_CONCEPT" : "S",
@@ -273,23 +298,6 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4119608,
-							"CONCEPT_NAME" : "Pulmonary fat embolism",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233938002",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
 							"CONCEPT_ID" : 254662,
 							"CONCEPT_NAME" : "Pulmonary infarction",
 							"STANDARD_CONCEPT" : "S",
@@ -314,23 +322,6 @@
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
 							"CONCEPT_CODE" : "74315008",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 45766471,
-							"CONCEPT_NAME" : "Pulmonary oil microembolism",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "703636009",
 							"DOMAIN_ID" : "Condition",
 							"VOCABULARY_ID" : "SNOMED",
 							"CONCEPT_CLASS_ID" : "Clinical Finding"
@@ -375,40 +366,6 @@
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 4119607,
-							"CONCEPT_NAME" : "Subacute massive pulmonary embolism",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233937007",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
-							"CONCEPT_ID" : 4119609,
-							"CONCEPT_NAME" : "Subacute pulmonary fat embolism",
-							"STANDARD_CONCEPT" : "S",
-							"STANDARD_CONCEPT_CAPTION" : "Standard",
-							"INVALID_REASON" : "V",
-							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "233939005",
-							"DOMAIN_ID" : "Condition",
-							"VOCABULARY_ID" : "SNOMED",
-							"CONCEPT_CLASS_ID" : "Clinical Finding"
-						},
-						"isExcluded" : false,
-						"includeDescendants" : false,
-						"includeMapped" : false
-					},
-					{
-						"concept" : {
 							"CONCEPT_ID" : 4236271,
 							"CONCEPT_NAME" : "Recurrent pulmonary embolism",
 							"STANDARD_CONCEPT" : "S",
@@ -423,47 +380,56 @@
 						"isExcluded" : false,
 						"includeDescendants" : false,
 						"includeMapped" : false
-					}
-				]
-			}
-		},
-		{
-			"id" : 1,
-			"name" : "[EB] Inpatient visit",
-			"expression" : {
-				"items" : [
+					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 262,
-							"CONCEPT_NAME" : "Emergency Room and Inpatient Visit",
+							"CONCEPT_ID" : 36713113,
+							"CONCEPT_NAME" : "Saddle embolus of pulmonary artery",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "ERIP",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "Visit",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "328511000119109",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : true,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					},
 					{
 						"concept" : {
-							"CONCEPT_ID" : 9201,
-							"CONCEPT_NAME" : "Inpatient Visit",
+							"CONCEPT_ID" : 35615055,
+							"CONCEPT_NAME" : "Saddle embolus of pulmonary artery with acute cor pulmonale",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "IP",
-							"DOMAIN_ID" : "Visit",
-							"VOCABULARY_ID" : "Visit",
-							"CONCEPT_CLASS_ID" : "Visit"
+							"CONCEPT_CODE" : "15964701000119109",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : true,
+						"includeDescendants" : false,
+						"includeMapped" : false
+					},
+					{
+						"concept" : {
+							"CONCEPT_ID" : 4119607,
+							"CONCEPT_NAME" : "Subacute massive pulmonary embolism",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "233937007",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Clinical Finding"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : false,
 						"includeMapped" : false
 					}
 				]

@@ -5,13 +5,6 @@ CREATE TABLE #Codesets (
 ;
 
 INSERT INTO #Codesets (codeset_id, concept_id)
-SELECT 1 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (37397537,432870,46272950,44782445,42536958,40321716,37312165,37209558,37204551,37204548,37204520,37204478,37117164,37116398,37110394,37019055,37018663,37017607,37017165,37016797,37016151,36717326,36716406,36716047,36715586,36715053,36713970,36713443,36713112,36674972,36674474,35625536,35623407,4345236,4338386,4316372,4314802,4311682,4305588,4301602,4301128,4300464,4299560,4298690,4292531,4292425,4272928,4264464,4258261,4247776,4239484,4235220,4234973,4233407,4230266,4226905,4225810,4219476,4218171,4214947,4211348,4204900,4197574,4188208,4186108,4185078,4184758,4184200,4177177,4173278,4172008,4166754,4159966,4159749,4159736,4156233,4148471,4147049,4146088,4146086,4145458,4140545,4139555,4137430,4133984,4133983,4133981,4125496,4125494,4123076,4123075,4123074,4121265,4121264,4120620,4119134,4103532,4102469,4101603,4101583,4101582,4100998,4098148,4098145,4098028,4098027,4082738,4077348,4031699,4028065,4027374,4009307,4000065,441264,440982,440372,436956,433749,432881,318397,140681,138723,137829)
-
-) I
-) C;
-INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (3007461,3031586,3024929,3039827,3024386,4267147,37393863)
@@ -26,12 +19,26 @@ UNION  select c.concept_id
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (3024929)
+
+) I
+) C;
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
   select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (262,9201)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
   and ca.ancestor_concept_id in (262,9201)
   and c.invalid_reason is null
+
+) I
+) C;
+INSERT INTO #Codesets (codeset_id, concept_id)
+SELECT 5 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4184758,4239484,138723,4204900,4102469,35623407,4027374,4133984,4120620,37017607,137829,4225810,4186108,4211348,37016151,37019055,4101582,4146088,4101583,4098027,4100998,37312165,4082738,4028065,4230266,36715053,4133981,4177177,4234973,318397,140681,4172008,4197574,4000065,4121264,4188208,436956,4316372,433749,4009307,37204551,4235220,4031699,4098145,4159749,4137430,4103532,4298690,37110394,4233407,432881,37209558,42536958,36713112,4125494,4077348,4345236,4166754,4140545,4247776,4125496,4159736,36715586,4184200,4133983,40321716,36716406,46272950,4226905,37018663,44782445,4173278,4219476,4301128,4098148,4147049,4101603,4272928,4145458,4139555,4338386,4156233,432870,4119134,4214947,4299560,4292531,4301602,4098028,4159966,4218171)
 
 ) I
 ) C;
@@ -75,9 +82,23 @@ from
 JOIN #Codesets codesets on ((m.measurement_concept_id = codesets.concept_id and codesets.codeset_id = 2))
 ) C
 
-WHERE C.value_as_number > 10.0000
-AND (C.range_low >= 130.0000 and C.range_low <= 170.0000)
-AND (C.value_as_number / NULLIF(C.range_low, 0)) < 1.0000
+WHERE (C.value_as_number >= 10000.0000 and C.value_as_number <= 150000.0000)
+AND C.unit_concept_id in (8647)
+-- End Measurement Criteria
+
+UNION ALL
+-- Begin Measurement Criteria
+select C.person_id, C.measurement_id as event_id, C.measurement_date as start_date, DATEADD(d,1,C.measurement_date) as END_DATE,
+       C.measurement_concept_id as TARGET_CONCEPT_ID, C.visit_occurrence_id,
+       C.measurement_date as sort_date
+from 
+(
+  select m.* 
+  FROM @cdm_database_schema.MEASUREMENT m
+JOIN #Codesets codesets on ((m.measurement_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+WHERE (C.value_as_number >= 10.0000 and C.value_as_number <= 150.0000)
 -- End Measurement Criteria
 
 UNION ALL
@@ -89,7 +110,7 @@ FROM
 (
   SELECT co.* 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 1))
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 5))
 ) C
 
 
@@ -132,7 +153,7 @@ from
 (
   select vo.* 
   FROM @cdm_database_schema.VISIT_OCCURRENCE vo
-JOIN #Codesets codesets on ((vo.visit_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+JOIN #Codesets codesets on ((vo.visit_concept_id = codesets.concept_id and codesets.codeset_id = 4))
 ) C
 
 

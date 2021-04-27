@@ -8,7 +8,6 @@ library(CohortDiagnostics)
 library(diagCovCoagOutcomes)
 
 #install.packages("renv") # if not already installed, install renv from CRAN
-renv::activate() # activate renv
 renv::restore() # this should prompt you to install the various packages required for the study
 
 library(shiny)
