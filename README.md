@@ -4,7 +4,7 @@ CovCoagOutcomeDiagnostics- CohortDiagnostics package to assess coagulopathy outc
 <img src="https://img.shields.io/badge/Study%20Status-Results%20Available-yellow.svg" alt="Study Status: Results Available">
 
 - Type: **CohortDiagnostics**
-- Results explorer: **[ShinyApp](https://livedataoxford.shinyapps.io/CovCoagBackgroundIncidence/)**
+- Results explorer: **[ShinyApp](https://livedataoxford.shinyapps.io/CovCoagOutcomesCohorts/)**
 - Protocol: **[EU PAS](http://www.encepp.eu/encepp/viewResource.htm?id=40642)**
 - Publications: ** **
 
