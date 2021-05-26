@@ -9,7 +9,7 @@ CovCoagOutcomeDiagnostics- CohortDiagnostics package to assess coagulopathy outc
 - Publications: ** **
 
 ## Running the analysis
-1) Download this entire repository (you can download as a zip folder using Code -> Download ZIP, or you can use GitHub Desktop). 
+1) Download this entire repository (you can download as a zip folder using Code -> Download ZIP, or you can use GitHub Desktop). If possible, avoid saving to a shared network drive as this can cause issues or in folders with a particularly long path.    
 2) Open the project <i>CovidCoagulopathyDiagnostics/diagCovCoagOutcomes/diagCovCoagOutcomes.Rproj</i> in RStudio (when inside the project, you will see its name on the top-right of your RStudio session)
 3) Open the <i>diagCovCoagOutcomes/extras/CodeToRun.R</i> file which should be the only file that you need to interact with< ul>
 <li> First, build the package (build -> install and restart)</li> 
@@ -26,4 +26,6 @@ CovCoagOutcomeDiagnostics- CohortDiagnostics package to assess coagulopathy outc
 <li><i>databaseId <-"....."</i>: This is the short name/ acronym for your database</li>  
 <li><i>databaseName <- "...."</i>: This is the full name of your database</li>  
 <li><i>databaseDescription <- "...."</i>: A brief description your database</li>  
-<li>After adding these details, you should then be able to run the line <i>diagCovCoagOutcomes::runCohortDiagnostics(...)</i> line which will run all of the required analyses. Once run, you can view you results by running the lines <i>CohortDiagnostics::preMergeDiagnosticsFiles(file.path(outputFolder, "diagnosticsExport"))</i> and <i>CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))</i></li> </ul>
+<li>After adding these details, you should then be able to run the line <i>diagCovCoagOutcomes::runCohortDiagnostics(...)</i> line which will run all of the required analyses. Once run, you can view you results by running the lines <i>CohortDiagnostics::preMergeDiagnosticsFiles(file.path(outputFolder, "diagnosticsExport"))</i> and <i>CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))</i></li> </ul>  
+
+ 
